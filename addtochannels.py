@@ -1,14 +1,31 @@
-# This scripts requires Python 3 and Telethon, not sure about the minimum python version. I'm using 3.7.
 import logging
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 import time
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest
+"""
+Adds one or more users to one or more channels (or supergroups). Managed entirely with plain text files, see how.
+"""
+
+# This script requires Python 3 and Telethon, not sure about the minimum python version. I'm using 3.7.
+# Change this if you wish to store these values somewhere else. Default locations, format, and mini-guide:
+# Get the API key and API hash by creating an application in my.telegram.org. Put them in a file called api.txt, each in one line, in that order.
+# Put the channel names in channels.txt, one per line.
+# Put the aliases in aliases.txt, one per line.
+
+with open('api.txt', 'r', encoding = 'utf-8') as f:
+    values = f.read().splitlines()
+    api_id = int(values[0])
+    api_hash = values[1]
+with open('aliases.txt', 'r', encoding = 'utf-8') as f:
+    aliases = f.read().splitlines()
+with open ('channels.txt', 'r', encoding = 'utf-8') as f:
+    channels = f.read().splitlines()
 
 async def add_to_channels(channels: list, users: list):
     """
-    Invites the users to the channels or megagroups. Both are lists. The members of these lists can be the actual name of the users and channels. Note that supergroups are considered channels.
+    Invites the users to the channels or megagroups. Both are lists. The members of these lists can be the actual name of the users and channels.
     """
     cached_channels = []
     for channel in channels:
@@ -17,20 +34,9 @@ async def add_to_channels(channels: list, users: list):
             print(alias)
             for channel in cached_channels:
                 await client(InviteToChannelRequest(channel, [alias]))
-                time.sleep(10)
-            print("hecho")
-            time.sleep(10)
-
-
-# Change this if you wish to store these values somewhere else
-with open('api.txt', 'r') as f:
-    values = f.read().splitlines()
-    api_id = int(values[0])
-    api_hash = values[1]
-with open('aliases.txt', 'r') as f:
-    aliases = f.read().splitlines()
-with open ('channels.txt', 'r') as f:
-    channels = f.read().splitlines()
+                time.sleep(10) # Maybe not necessary, but I don't want to get flood protection.
+            print("Done")
+            time.sleep(10) # See comment above.
 
 with TelegramClient('tsession', api_id, api_hash) as client:
     client.loop.run_until_complete(add_to_channels(channels = channels, users = aliases))
