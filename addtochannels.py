@@ -5,12 +5,12 @@ import time
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest
 """
-Adds one or more users to one or more channels (or supergroups). Managed entirely with plain text files, see how.
+Adds one or more users to one or more channels (or megagroups). Managed entirely with plain text files by default.
 """
 
 # This script requires Python 3 and Telethon, not sure about the minimum python version. I'm using 3.7.
 # Change this if you wish to store these values somewhere else. Default locations, format, and mini-guide:
-# Get the API key and API hash by creating an application in my.telegram.org. Put them in a file called api.txt, each in one line, in that order.
+# Get the API key and API hash (for this script to be able to access Telegram in your behalf) by creating an application in my.telegram.org. Put them in a file called api.txt, each in one line, in that order.
 # Put the channel names in channels.txt, one per line.
 # Put the aliases in aliases.txt, one per line.
 
