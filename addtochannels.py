@@ -25,7 +25,7 @@ with open ('channels.txt', 'r', encoding = 'utf-8') as f:
 
 async def add_to_channels(channels: list, users: list):
     """
-    Invites the users to the channels or megagroups. Both are lists. The members of these lists can be the actual name of the users and channels.
+    Invites the users to the channels or megagroups. Both are lists. The members of these lists can be the actual names of the users and channels.
     """
     cached_channels = []
     for channel in channels:
