@@ -29,7 +29,11 @@ async def add_to_channels(channels: list, users: list):
     """
     cached_channels = []
     for channel in channels:
-        cached_channels.append(await client.get_input_entity(channel))
+        try:
+            cached_channels.append(await client.get_input_entity(channel))
+        except ValueError :
+            dialogs = await client.get_dialogs()
+            cached_channels.append(await client.get_input_entity(channel))
         for alias in aliases:
             print(alias)
             for channel in cached_channels:
