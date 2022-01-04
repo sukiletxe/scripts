@@ -37,11 +37,12 @@ async def handler(event):
         common_groups = await client(GetCommonChatsRequest(by, limit = 0, max_id = 0))
         common_groups = common_groups.chats
         common_groups.remove(group)
-        common_titles = [x.title for x in common_groups]
         if common_groups:
+            common_titles = [x.title for x in common_groups]
             msg += "\nYou both have the following groups in common:\n"
             msg += '\n'.join(common_titles)
         await client.send_message(me.id, msg)
+        await client(MarkDialogUnreadRequest(peer = me, unread = True))
 
 async def main():
     client.add_event_handler(handler, events.ChatAction)
