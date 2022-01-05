@@ -9,7 +9,7 @@ import asyncio
 # This script requires Python 3 and Telethon, not sure about the minimum python version. I'm using 3.9.
 # Change this if you wish to store these values somewhere else. Default locations, format, and mini-guide:
 # Get the API key and API hash (for this script to be able to access Telegram in your behalf) by creating an application in my.telegram.org. Put them in a file called api.txt, each in one line, in that order.
-# Simply run this. The groups you get added to (when this is running and between runs) will be notified to saved messages.
+# Simply run this. The groups you get added to (when this is running and between runs) will be notified to saved messages. Note that the between runs part doesn't work that well as of now, you may want it to run permanently.
 with open('api.txt', 'r', encoding = 'utf-8') as f:
     values = f.read().splitlines()
     api_id = int(values[0])
