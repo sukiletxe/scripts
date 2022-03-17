@@ -44,6 +44,6 @@ async def add_to_channels(channels: list, users: list):
             time.sleep(10) # See comment above.
 
 async def main():
-    async with await TelegramClient('tsession', api_id, api_hash) as client:
+    async with await TelegramClient('tsession', api_id, api_hash).start() as client:
         await add_to_channels(channels = channels, users = users)
 asyncio.run(main())
