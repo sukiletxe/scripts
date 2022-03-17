@@ -2,7 +2,8 @@ import logging
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 import time
-from telethon.sync import TelegramClient
+import asyncio
+from telethon import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest
 """
 Adds one or more users to one or more channels (or megagroups). Managed entirely with plain text files by default.
@@ -42,5 +43,7 @@ async def add_to_channels(channels: list, users: list):
             print("Done")
             time.sleep(10) # See comment above.
 
-with TelegramClient('tsession', api_id, api_hash) as client:
-    client.loop.run_until_complete(add_to_channels(channels = channels, users = aliases))
+async def main():
+    async with await TelegramClient('tsession', api_id, api_hash) as client:
+        await add_to_channels(channels = channels, users = aliases)
+asyncio.run(main())
