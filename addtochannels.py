@@ -3,6 +3,7 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
                     level=logging.WARNING)
 import time
 import asyncio
+import os
 from telethon import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest
 """
@@ -44,6 +45,6 @@ async def add_to_channels(channels: list, users: list):
             time.sleep(10) # See comment above.
 
 async def main():
-    async with await TelegramClient('tsession', api_id, api_hash).start() as client:
+    async with await TelegramClient(os.path.basename(__file__), api_id, api_hash).start() as client:
         await add_to_channels(channels = channels, users = users)
 asyncio.run(main())

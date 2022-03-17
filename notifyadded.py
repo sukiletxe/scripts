@@ -2,6 +2,7 @@ import logging
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
 import asyncio
+import os
 
 from telethon import TelegramClient
 from telethon import events
@@ -46,7 +47,7 @@ async def handler(event):
         await event.client(MarkDialogUnreadRequest(peer = me, unread = True))
 
 async def main():
-    async with await TelegramClient('tsession', api_id, api_hash).start() as client:
+    async with await TelegramClient(os.path.basename(__file__), api_id, api_hash).start() as client:
         client.add_event_handler(handler, events.ChatAction)
         await wait_catch_up(client)
         await client.run_until_disconnected()
