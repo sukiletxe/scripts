@@ -20,7 +20,7 @@ with open('api.txt', 'r', encoding = 'utf-8') as f:
     api_id = int(values[0])
     api_hash = values[1]
 with open('aliases.txt', 'r', encoding = 'utf-8') as f:
-    aliases = f.read().splitlines()
+    users = f.read().splitlines()
 with open ('channels.txt', 'r', encoding = 'utf-8') as f:
     channels = f.read().splitlines()
 
@@ -45,5 +45,5 @@ async def add_to_channels(channels: list, users: list):
 
 async def main():
     async with await TelegramClient('tsession', api_id, api_hash) as client:
-        await add_to_channels(channels = channels, users = aliases)
+        await add_to_channels(channels = channels, users = users)
 asyncio.run(main())
