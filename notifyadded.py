@@ -3,7 +3,7 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
                     level=logging.WARNING)
 from telethon.sync import TelegramClient
 from telethon import events
-from telethon.tl.functions.messages import GetCommonChatsRequest
+from telethon.tl.functions.messages import GetCommonChatsRequest, MarkDialogUnreadRequest
 from telethon.tl.types import UserEmpty
 import asyncio
 # This script requires Python 3 and Telethon, not sure about the minimum python version. I'm using 3.9.
