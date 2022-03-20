@@ -2,7 +2,7 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-^#!m::
+^#!m UP::
 toggle_mono() {
 	send #i
 	sleep 550
