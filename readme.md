@@ -6,5 +6,5 @@ These are small scripts that I used at least once and I thought would be nice sh
 * Test_killing_pids (Python): Dirty test to see how a process can kill itself. Not useful on its own.
 * Addtochannels (Python): Adds some Telegram users to some channels (or supergroups).
 * Notifyadded (Python): Script which notifies you who added you to a telegram group (not retroactively), and the groups in common you have with the person who added you.
-* dirlist (Powershell): Script which lists a folder recursively, outputting the result in `direlist<foldername>.txt`. Here the level of a subfolder is indicated with indentation.
-* Mono (AutoHotkey): Press Ctrl+Win+Alt+M to toggle systemwide mono audio.
+* dirlist (Powershell): Script which lists a folder recursively, outputting the result in `dirlist<foldername>.txt`. Here the level of a subfolder is indicated with indentation.
+* Mono (AutoHotkey): Press Ctrl+Win+Alt+M to toggle systemwide mono audio. Works in Windows 10, no idea if it does in Windows 11.
